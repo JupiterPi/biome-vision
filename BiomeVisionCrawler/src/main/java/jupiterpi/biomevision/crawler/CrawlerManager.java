@@ -5,16 +5,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 public class CrawlerManager {
-    private final int betweenTime = 5 * 20;
+    private final int betweenTime = 30;
 
     private Crawler crawler = null;
     private BukkitTask task = null;
 
-    public void startCrawler(Player player) {
+    public void startCrawler(Player player, int topCrop, int bottomCrop) {
         stopCrawler();
-        crawler = new Crawler(player);
+        crawler = new Crawler(player, topCrop, bottomCrop);
         crawler.start();
-        task = Bukkit.getServer().getScheduler().runTaskTimer(BiomeVisionCrawler.plugin, crawler::step, 0, betweenTime);
+        task = Bukkit.getServer().getScheduler().runTaskTimer(BiomeVisionCrawler.plugin, crawler::step, 30, betweenTime);
     }
 
     public void stopCrawler() {

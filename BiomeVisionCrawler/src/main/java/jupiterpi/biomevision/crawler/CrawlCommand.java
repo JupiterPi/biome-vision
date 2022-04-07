@@ -17,7 +17,9 @@ public class CrawlCommand implements CommandExecutor {
         if (BiomeVisionCrawler.crawlerManager.running()) {
             BiomeVisionCrawler.crawlerManager.stopCrawler();
         } else {
-            BiomeVisionCrawler.crawlerManager.startCrawler((Player) sender);
+            int topCrop = Integer.parseInt(args[0]);
+            int bottomCrop = Integer.parseInt(args[1]);
+            BiomeVisionCrawler.crawlerManager.startCrawler((Player) sender, topCrop, bottomCrop);
         }
 
         return true;
