@@ -1,0 +1,8 @@
+name: BiomeVisionCrawler
+version: 1.0
+author: JupiterPi
+main: jupiterpi.biomevision.crawler.BiomeVisionCrawler
+api-version: 1.18
+commands:
+  crawl:
+    description: Starts crawling for the player excuting the command.
