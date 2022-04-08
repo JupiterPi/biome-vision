@@ -46,7 +46,7 @@ public class Crawler {
         player.teleport(location);
 
         Biome biome = location.getWorld().getBiome(location);
-        String biomeName = biome.name();
+        String biomeName = biome.name().toLowerCase();
 
         Bukkit.getScheduler().runTaskLater(BiomeVisionCrawler.plugin, () -> {
             try {
@@ -55,11 +55,14 @@ public class Crawler {
                 Dimension screenSize = toolkit.getScreenSize();
                 Image image = robot.createScreenCapture(new Rectangle(0, bottomCrop, screenSize.width, screenSize.height-(bottomCrop+topCrop)));
 
+                new File("dataset\\" + biomeName).mkdir();
+                String fileName = String.format("%s_%s_%s-%s.png", biomeName, new Date().getTime(), location.getYaw(), location.getPitch());
+
                 BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D bGr = bufferedImage.createGraphics();
                 bGr.drawImage(image, 0, 0, null);
                 bGr.dispose();
-                File file = new File(String.format("dataset\\screenshot%s__%s__%s_%s.png", new Date().getTime(), biomeName.toLowerCase(), location.getYaw(), location.getPitch()));
+                File file = new File(String.format("dataset\\" + biomeName + "\\" + fileName));
                 ImageIO.write(bufferedImage, "png", file);
 
                 // https://stackoverflow.com/questions/13605248/java-converting-image-to-bufferedimage
