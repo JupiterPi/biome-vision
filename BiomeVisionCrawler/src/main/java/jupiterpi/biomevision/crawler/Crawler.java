@@ -33,9 +33,9 @@ public class Crawler {
     public void step() {
         Location lastLocation = player.getLocation();
         Location location = new Location(Bukkit.getWorld("world"),
-                lastLocation.getX() + 5 + new Random().nextInt(10),
+                lastLocation.getX() + 5 + new Random().nextInt(5), // 5 to 10
                 255,
-                lastLocation.getX() + 5 + new Random().nextInt(10)
+                lastLocation.getX() + 5 + new Random().nextInt(5) // 5 to 10
         );
         while (!location.getBlock().isSolid()) {
             location.setY(location.getY() - 1);
@@ -67,7 +67,7 @@ public class Crawler {
             } catch (AWTException | IOException e) {
                 e.printStackTrace();
             }
-        }, 15);
+        }, 3);
     }
 
     public void stop() {

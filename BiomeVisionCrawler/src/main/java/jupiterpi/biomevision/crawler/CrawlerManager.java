@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 
 public class CrawlerManager {
-    private final int betweenTime = 30;
+    private final int betweenTime = 7;
 
     private Crawler crawler = null;
     private BukkitTask task = null;
