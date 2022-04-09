@@ -55,14 +55,14 @@ public class Crawler {
                 Dimension screenSize = toolkit.getScreenSize();
                 Image image = robot.createScreenCapture(new Rectangle(0, bottomCrop, screenSize.width, screenSize.height-(bottomCrop+topCrop)));
 
-                new File("dataset\\" + biomeName).mkdir();
+                new File("C:\\Private\\BiomeVision\\dataset\\" + biomeName).mkdir();
                 String fileName = String.format("%s_%s_%s-%s.png", biomeName, new Date().getTime(), location.getYaw(), location.getPitch());
 
                 BufferedImage bufferedImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D bGr = bufferedImage.createGraphics();
                 bGr.drawImage(image, 0, 0, null);
                 bGr.dispose();
-                File file = new File(String.format("dataset\\" + biomeName + "\\" + fileName));
+                File file = new File(String.format("C:\\Private\\BiomeVision\\dataset\\" + biomeName + "\\" + fileName));
                 ImageIO.write(bufferedImage, "png", file);
 
                 // https://stackoverflow.com/questions/13605248/java-converting-image-to-bufferedimage
