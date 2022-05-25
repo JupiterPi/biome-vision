@@ -1,0 +1,5 @@
+.idea
+venv
+testdata
+testdata_out_*
+grouped_out_*
